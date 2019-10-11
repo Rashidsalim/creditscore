@@ -1,5 +1,5 @@
 {
- "autoname": "Customer:.#",
+ "autoname": "field:national_id",
  "creation": "2019-10-11 12:18:49.003559",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -13,7 +13,10 @@
   "national_id",
   "address_section",
   "postal_address",
-  "county"
+  "county",
+  "mpesa_end_point_section",
+  "customer_created_mpesa",
+  "mpesa_id"
  ],
  "fields": [
   {
@@ -41,14 +44,18 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Phone Number",
-   "reqd": 1
+   "no_copy": 1,
+   "reqd": 1,
+   "unique": 1
   },
   {
    "fieldname": "national_id",
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "National ID",
-   "reqd": 1
+   "no_copy": 1,
+   "reqd": 1,
+   "unique": 1
   },
   {
    "collapsible": 1,
@@ -71,9 +78,28 @@
   {
    "fieldname": "column_break_3",
    "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "customer_created_mpesa",
+   "fieldtype": "Check",
+   "label": "Customer Created Mpesa",
+   "read_only": 1
+  },
+  {
+   "fieldname": "mpesa_id",
+   "fieldtype": "Data",
+   "label": "Mpesa ID",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "mpesa_end_point_section",
+   "fieldtype": "Section Break",
+   "label": "Mpesa End Point"
   }
  ],
- "modified": "2019-10-11 12:27:47.441125",
+ "modified": "2019-10-12 04:25:20.861943",
  "modified_by": "Administrator",
  "module": "Registry",
  "name": "Customer",
@@ -93,7 +119,6 @@
    "write": 1
   }
  ],
- "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "title_field": "customer_name",
