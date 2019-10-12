@@ -89,17 +89,17 @@
   {
    "fieldname": "mpesa_id",
    "fieldtype": "Data",
-   "label": "Mpesa ID",
+   "label": "Patascore ID",
    "read_only": 1
   },
   {
    "collapsible": 1,
    "fieldname": "mpesa_end_point_section",
    "fieldtype": "Section Break",
-   "label": "Mpesa End Point"
+   "label": "Patascore End Point"
   }
  ],
- "modified": "2019-10-12 04:25:20.861943",
+ "modified": "2019-10-12 06:07:41.287004",
  "modified_by": "Administrator",
  "module": "Registry",
  "name": "Customer",
