@@ -1,0 +1,43 @@
+{
+ "module": "Registry",
+ "field_order": [
+  "url",
+  "token"
+ ],
+ "permissions": [
+  {
+   "read": 1,
+   "email": 1,
+   "print": 1,
+   "write": 1,
+   "create": 1,
+   "share": 1,
+   "role": "System Manager",
+   "delete": 1
+  }
+ ],
+ "sort_order": "ASC",
+ "modified_by": "Administrator",
+ "owner": "Administrator",
+ "issingle": 1,
+ "quick_entry": 1,
+ "creation": "2019-10-12 02:57:52.151475",
+ "track_changes": 1,
+ "sort_field": "modified",
+ "engine": "InnoDB",
+ "fields": [
+  {
+   "fieldname": "url",
+   "fieldtype": "Data",
+   "label": "URL"
+  },
+  {
+   "fieldname": "token",
+   "fieldtype": "Data",
+   "label": "Token"
+  }
+ ],
+ "name": "Patascore API Settings",
+ "doctype": "DocType",
+ "modified": "2019-10-12 02:57:52.151475"
+}

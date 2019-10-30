@@ -8,6 +8,7 @@
   "personal_information_section",
   "customer_name",
   "gender",
+  "date_of_birth",
   "column_break_3",
   "phone_number",
   "national_id",
@@ -16,7 +17,11 @@
   "county",
   "mpesa_end_point_section",
   "customer_created_mpesa",
-  "mpesa_id"
+  "mpesa_id",
+  "attachments_section",
+  "upload_national_id",
+  "column_break_15",
+  "upload_mpesa_statement"
  ],
  "fields": [
   {
@@ -83,12 +88,14 @@
    "default": "0",
    "fieldname": "customer_created_mpesa",
    "fieldtype": "Check",
-   "label": "Customer Created Mpesa",
+   "label": "Customer Created",
    "read_only": 1
   },
   {
    "fieldname": "mpesa_id",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
    "label": "Patascore ID",
    "read_only": 1
   },
@@ -97,9 +104,34 @@
    "fieldname": "mpesa_end_point_section",
    "fieldtype": "Section Break",
    "label": "Patascore End Point"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "attachments_section",
+   "fieldtype": "Section Break",
+   "label": "Attachments"
+  },
+  {
+   "fieldname": "upload_national_id",
+   "fieldtype": "Attach Image",
+   "label": "Upload National ID"
+  },
+  {
+   "fieldname": "column_break_15",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "upload_mpesa_statement",
+   "fieldtype": "Attach",
+   "label": "Upload MPesa Statement"
+  },
+  {
+   "fieldname": "date_of_birth",
+   "fieldtype": "Date",
+   "label": "Date of Birth"
   }
  ],
- "modified": "2019-10-12 06:07:41.287004",
+ "modified": "2019-10-30 12:58:04.312561",
  "modified_by": "Administrator",
  "module": "Registry",
  "name": "Customer",

@@ -14,8 +14,8 @@ class Customer(Document):
 
 
 	def create_customer(self):
-		url = frappe.db.get_value("Mpesa API Settings",None,"url")
-		token = frappe.db.get_value("Mpesa API Settings",None,"token")
+		url = frappe.db.get_value("Patascore API Settings",None,"url")
+		token = frappe.db.get_value("Patascore API Settings",None,"token")
 		data = {
 		"full_name": self.customer_name,
 		"national_id": self.national_id,
@@ -35,5 +35,5 @@ class Customer(Document):
 			self.customer_created_mpesa = 1
 			self.mpesa_id = str(json.loads(response.text)["data"]["id"])
 		else:
-			frappe.throw("Problem Creating Customer On MPesa")
+			frappe.throw("Problem Creating Customer On Patascore")
 
