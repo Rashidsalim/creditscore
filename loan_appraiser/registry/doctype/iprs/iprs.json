@@ -1,0 +1,68 @@
+{
+ "creation": "2019-11-02 19:57:06.554112",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "reference_id",
+  "surname",
+  "column_break_2",
+  "national_id",
+  "full_name",
+  "column_break_6",
+  "gender",
+  "other_names"
+ ],
+ "fields": [
+  {
+   "fieldname": "reference_id",
+   "fieldtype": "Read Only",
+   "label": "Reference ID"
+  },
+  {
+   "fieldname": "surname",
+   "fieldtype": "Read Only",
+   "label": "Surname"
+  },
+  {
+   "fieldname": "national_id",
+   "fieldtype": "Read Only",
+   "label": "National ID"
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Read Only",
+   "label": "Full Name"
+  },
+  {
+   "fieldname": "gender",
+   "fieldtype": "Read Only",
+   "label": "gender"
+  },
+  {
+   "fieldname": "other_names",
+   "fieldtype": "Read Only",
+   "label": "Other Names"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "istable": 1,
+ "modified": "2019-11-02 20:20:17.636527",
+ "modified_by": "Administrator",
+ "module": "Registry",
+ "name": "IPRS",
+ "name_case": "Title Case",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

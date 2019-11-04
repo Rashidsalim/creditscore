@@ -36,4 +36,3 @@ class Customer(Document):
 			self.mpesa_id = str(json.loads(response.text)["data"]["id"])
 		else:
 			frappe.throw("Problem Creating Customer On Patascore")
-

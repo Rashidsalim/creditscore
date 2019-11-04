@@ -14,6 +14,7 @@
   "national_id",
   "address_section",
   "postal_address",
+  "column_break_10",
   "county",
   "mpesa_end_point_section",
   "customer_created_mpesa",
@@ -21,7 +22,10 @@
   "attachments_section",
   "upload_national_id",
   "column_break_15",
-  "upload_mpesa_statement"
+  "iprs_verification_section",
+  "iprs_data",
+  "section_break_18",
+  "customer_score"
  ],
  "fields": [
   {
@@ -66,12 +70,12 @@
    "collapsible": 1,
    "fieldname": "address_section",
    "fieldtype": "Section Break",
-   "label": "Address"
+   "label": "Location"
   },
   {
    "fieldname": "postal_address",
    "fieldtype": "Data",
-   "label": "Postal Address"
+   "label": "Physical Address"
   },
   {
    "fieldname": "county",
@@ -121,17 +125,39 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "upload_mpesa_statement",
-   "fieldtype": "Attach",
-   "label": "Upload MPesa Statement"
-  },
-  {
    "fieldname": "date_of_birth",
    "fieldtype": "Date",
    "label": "Date of Birth"
+  },
+  {
+   "fieldname": "section_break_18",
+   "fieldtype": "Section Break",
+   "label": "Risk Appraisal"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "iprs_verification_section",
+   "fieldtype": "Section Break",
+   "label": "IPRS Verification"
+  },
+  {
+   "fieldname": "iprs_data",
+   "fieldtype": "Table",
+   "label": "IPRS Data",
+   "options": "IPRS"
+  },
+  {
+   "fieldname": "column_break_10",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "customer_score",
+   "fieldtype": "Table",
+   "label": "Customer Score",
+   "options": "Score"
   }
  ],
- "modified": "2019-10-30 12:58:04.312561",
+ "modified": "2019-11-02 20:15:38.554127",
  "modified_by": "Administrator",
  "module": "Registry",
  "name": "Customer",
