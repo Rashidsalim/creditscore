@@ -19,12 +19,3 @@
 # 			"national_id": '37692112'
 # 			"callback_url": ''
 # 		}
-# 		headers = {"Content-Type":"application/json",
-# 		"Authorization":"Bearer "+token
-# 		}
-# 		r = requests.post(str(url)+"api/v1/verification", headers = headers, data =json.dumps(data))
-
-# 		frappe.msgprint(str(json.loads(response.text)["message"]))
-		
-# 		# if str(json.loads(response.text)["status"]) == "202":
-# 		# 	self.

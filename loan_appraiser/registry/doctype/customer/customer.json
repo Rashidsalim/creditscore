@@ -23,9 +23,23 @@
   "upload_national_id",
   "column_break_15",
   "iprs_verification_section",
-  "iprs_data",
+  "iprs_verified",
+  "reference_id",
+  "iprs_national_id",
+  "column_break_20",
+  "iprs_full_name",
+  "iprs_dob",
   "section_break_18",
-  "customer_score"
+  "statement_analytics_successfully_fetched",
+  "current_score",
+  "loan_range",
+  "betting_expenses",
+  "cash_received",
+  "cash_sent_out",
+  "loan_repayment",
+  "column_break_27",
+  "loan_taken",
+  "savings"
  ],
  "fields": [
   {
@@ -130,6 +144,7 @@
    "label": "Date of Birth"
   },
   {
+   "collapsible": 1,
    "fieldname": "section_break_18",
    "fieldtype": "Section Break",
    "label": "Risk Appraisal"
@@ -141,23 +156,98 @@
    "label": "IPRS Verification"
   },
   {
-   "fieldname": "iprs_data",
-   "fieldtype": "Table",
-   "label": "IPRS Data",
-   "options": "IPRS"
-  },
-  {
    "fieldname": "column_break_10",
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "customer_score",
-   "fieldtype": "Table",
-   "label": "Customer Score",
-   "options": "Score"
+   "fieldname": "iprs_national_id",
+   "fieldtype": "Read Only",
+   "in_list_view": 1,
+   "label": "National ID"
+  },
+  {
+   "fieldname": "iprs_full_name",
+   "fieldtype": "Read Only",
+   "label": "Full Name"
+  },
+  {
+   "fieldname": "column_break_20",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "reference_id",
+   "fieldtype": "Read Only",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "reference ID"
+  },
+  {
+   "fieldname": "iprs_dob",
+   "fieldtype": "Read Only",
+   "label": "Date of birth"
+  },
+  {
+   "fieldname": "betting_expenses",
+   "fieldtype": "Read Only",
+   "label": "Betting Expenses"
+  },
+  {
+   "fieldname": "cash_received",
+   "fieldtype": "Read Only",
+   "label": "Cash Received"
+  },
+  {
+   "fieldname": "cash_sent_out",
+   "fieldtype": "Read Only",
+   "label": "Cash Sent Out"
+  },
+  {
+   "fieldname": "loan_repayment",
+   "fieldtype": "Read Only",
+   "label": "Loan Repayment"
+  },
+  {
+   "fieldname": "loan_taken",
+   "fieldtype": "Read Only",
+   "label": "Loans Taken"
+  },
+  {
+   "fieldname": "savings",
+   "fieldtype": "Read Only",
+   "label": "Savings"
+  },
+  {
+   "fieldname": "column_break_27",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "loan_range",
+   "fieldtype": "Read Only",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Loan Range"
+  },
+  {
+   "fieldname": "current_score",
+   "fieldtype": "Read Only",
+   "label": "Current Score"
+  },
+  {
+   "default": "0",
+   "fieldname": "iprs_verified",
+   "fieldtype": "Check",
+   "label": "IPRS Verified",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "statement_analytics_successfully_fetched",
+   "fieldtype": "Check",
+   "label": "Statement analytics successfully fetched",
+   "read_only": 1
   }
  ],
- "modified": "2019-11-02 20:15:38.554127",
+ "modified": "2019-11-04 11:54:17.501194",
  "modified_by": "Administrator",
  "module": "Registry",
  "name": "Customer",
