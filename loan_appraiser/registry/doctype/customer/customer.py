@@ -9,7 +9,7 @@ import requests
 import json
 
 class Customer(Document):
-	def validate(self):
+	def after_insert(self):
 		self.create_customer()
 
 
