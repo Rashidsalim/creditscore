@@ -6,8 +6,8 @@ def get_data():
 	return [
 		{
 			"module_name": "Loan Appraiser",
-			"color": "grey",
-			"icon": "octicon octicon-file-directory",
+			"color": "#D10056",
+			"icon": "octicon octicon-person",
 			"type": "module",
 			"label": _("Loan Appraiser")
 		}
