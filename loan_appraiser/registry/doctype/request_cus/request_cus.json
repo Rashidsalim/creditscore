@@ -1,6 +1,6 @@
 {
  "autoname": "field:national_id",
- "creation": "2019-10-11 12:18:49.003559",
+ "creation": "2019-11-11 13:40:08.374611",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
@@ -53,16 +53,23 @@
    "fieldname": "customer_name",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Full Name",
-   "reqd": 1
+   "label": "Full Name"
   },
   {
    "fieldname": "gender",
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Gender",
-   "options": "Male\nFemale",
-   "reqd": 1
+   "options": "Male\nFemale"
+  },
+  {
+   "fieldname": "date_of_birth",
+   "fieldtype": "Date",
+   "label": "Date of Birth"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
   },
   {
    "fieldname": "phone_number",
@@ -94,15 +101,20 @@
    "label": "Physical Address"
   },
   {
+   "fieldname": "column_break_10",
+   "fieldtype": "Column Break"
+  },
+  {
    "fieldname": "county",
    "fieldtype": "Select",
    "label": "County",
-   "options": "Nairobi\nMombasa\nKisumu",
-   "reqd": 1
+   "options": "Nairobi\nMombasa\nKisumu"
   },
   {
-   "fieldname": "column_break_3",
-   "fieldtype": "Column Break"
+   "collapsible": 1,
+   "fieldname": "mpesa_end_point_section",
+   "fieldtype": "Section Break",
+   "label": "Patascore End Point"
   },
   {
    "default": "0",
@@ -121,12 +133,6 @@
   },
   {
    "collapsible": 1,
-   "fieldname": "mpesa_end_point_section",
-   "fieldtype": "Section Break",
-   "label": "Patascore End Point"
-  },
-  {
-   "collapsible": 1,
    "fieldname": "attachments_section",
    "fieldtype": "Section Break",
    "label": "Attachments"
@@ -141,40 +147,17 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "date_of_birth",
-   "fieldtype": "Date",
-   "label": "Date of Birth"
-  },
-  {
-   "collapsible": 1,
-   "fieldname": "section_break_18",
-   "fieldtype": "Section Break",
-   "label": "Risk Appraisal"
-  },
-  {
    "collapsible": 1,
    "fieldname": "iprs_verification_section",
    "fieldtype": "Section Break",
    "label": "IPRS Verification"
   },
   {
-   "fieldname": "column_break_10",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "iprs_national_id",
-   "fieldtype": "Read Only",
-   "in_list_view": 1,
-   "label": "National ID"
-  },
-  {
-   "fieldname": "iprs_full_name",
-   "fieldtype": "Read Only",
-   "label": "Full Name"
-  },
-  {
-   "fieldname": "column_break_20",
-   "fieldtype": "Column Break"
+   "default": "0",
+   "fieldname": "iprs_verified",
+   "fieldtype": "Check",
+   "label": "IPRS Verified",
+   "read_only": 1
   },
   {
    "fieldname": "reference_id",
@@ -184,9 +167,54 @@
    "label": "reference ID"
   },
   {
+   "fieldname": "iprs_national_id",
+   "fieldtype": "Read Only",
+   "in_list_view": 1,
+   "label": "National ID"
+  },
+  {
+   "fieldname": "column_break_20",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "iprs_full_name",
+   "fieldtype": "Read Only",
+   "label": "Full Name"
+  },
+  {
    "fieldname": "iprs_dob",
    "fieldtype": "Read Only",
    "label": "Date of birth"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_18",
+   "fieldtype": "Section Break",
+   "label": "Risk Appraisal"
+  },
+  {
+   "default": "0",
+   "fieldname": "statement_analytics_successfully_fetched",
+   "fieldtype": "Check",
+   "label": "Statement analytics successfully fetched",
+   "read_only": 1
+  },
+  {
+   "fieldname": "get_statement_score",
+   "fieldtype": "Button",
+   "label": "Get Statement Score"
+  },
+  {
+   "fieldname": "current_score",
+   "fieldtype": "Data",
+   "label": "Current Score"
+  },
+  {
+   "fieldname": "loan_range",
+   "fieldtype": "Read Only",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Loan Range"
   },
   {
    "fieldname": "betting_expenses",
@@ -209,6 +237,10 @@
    "label": "Loan Repayment"
   },
   {
+   "fieldname": "column_break_27",
+   "fieldtype": "Column Break"
+  },
+  {
    "fieldname": "loan_taken",
    "fieldtype": "Read Only",
    "label": "Loans Taken"
@@ -219,51 +251,16 @@
    "label": "Savings"
   },
   {
-   "fieldname": "column_break_27",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "loan_range",
-   "fieldtype": "Read Only",
-   "in_list_view": 1,
-   "in_preview": 1,
-   "label": "Loan Range"
-  },
-  {
-   "fieldname": "current_score",
-   "fieldtype": "Data",
-   "label": "Current Score"
-  },
-  {
-   "default": "0",
-   "fieldname": "iprs_verified",
-   "fieldtype": "Check",
-   "label": "IPRS Verified",
-   "read_only": 1
-  },
-  {
-   "default": "0",
-   "fieldname": "statement_analytics_successfully_fetched",
-   "fieldtype": "Check",
-   "label": "Statement analytics successfully fetched",
-   "read_only": 1
-  },
-  {
-   "fieldname": "get_statement_score",
-   "fieldtype": "Button",
-   "label": "Get Statement Score"
-  },
-  {
    "fieldname": "statement_response",
    "fieldtype": "Text",
    "in_list_view": 1,
    "label": "Statement response"
   }
  ],
- "modified": "2019-11-11 12:58:02.712681",
+ "modified": "2019-11-11 13:42:36.700106",
  "modified_by": "Administrator",
  "module": "Registry",
- "name": "Customer",
+ "name": "Request Cus",
  "name_case": "Title Case",
  "owner": "Administrator",
  "permissions": [
@@ -296,5 +293,6 @@
  "sort_field": "modified",
  "sort_order": "DESC",
  "title_field": "customer_name",
- "track_changes": 1
+ "track_changes": 1,
+ "track_views": 1
 }
