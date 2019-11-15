@@ -9,7 +9,7 @@ import requests
 import json
 
 class Customer(Document):
-	def validate(self):
+	def after_insert(self):
 		self.create_customer()
 
 
@@ -32,14 +32,38 @@ class Customer(Document):
 		fetch_stc = requests.get(str(url)+"api/v1/mpesa/analytics",headers = headers, params=data_statement)
 
 		frappe.msgprint(str(json.loads(response.text)["message"]))
-		# frappe.msgprint(str(json.loads(response.text)["status"]))
-		# frappe.msgprint(str(json.loads(response.text)["message"]))
-		# frappe.msgprint(str(json.loads(response.text)["data"]))
 		if str(json.loads(response.text)["status"]) == "200":
 			self.customer_created_mpesa = 1
 			self.mpesa_id = str(json.loads(response.text)["data"]["id"])
-			#self.loan_range = str(json.loads(fetch_stc.text)["loan_range"])
-			#self.statement_analytics_successfully_fetched = 1
 			self.statement_response = str(json.loads(fetch_stc.text)["message"])
 		else:
 			frappe.throw("Problem Creating Customer On Patascore")
+
+@frappe.whitelist()
+def check_statement_exist(national_id):
+	url = frappe.db.get_value("Patascore API Settings",None,"url")
+	token = frappe.db.get_value("Patascore API Settings",None,"token")
+	
+	headers = {
+		"Content-Type":"application/json",
+		"Authorization":"Bearer "+token
+	}
+	
+	response = requests.get(str(url)+"api/v1/statement/check?national_id={}".format("37692112"), headers = headers,verify=False)
+	
+	return (response.json())
+	
+
+@frappe.whitelist()
+def check_statement_analytics(national_id):
+	url = frappe.db.get_value("Patascore API Settings",None,"url")
+	token = frappe.db.get_value("Patascore API Settings",None,"token")
+	
+	headers = {
+		"Content-Type":"application/json",
+		"Authorization":"Bearer "+token
+	}
+	
+	response = requests.get(str(url)+"api/v1/mpesa/analytics?national_id={}".format("37692112"), headers = headers,verify=False)
+	frappe.msgprint(str(response))
+	return (response.json())
