@@ -8,62 +8,69 @@ from frappe.model.document import Document
 import requests
 import json
 
+
 class Customer(Document):
-	def after_insert(self):
-		self.create_customer()
+    def after_insert(self):
+        self.create_customer()
 
+    def create_customer(self):
+        url = frappe.db.get_value("Patascore API Settings", None, "url")
+        token = frappe.db.get_value("Patascore API Settings", None, "token")
+        data = {
+            "full_name": self.customer_name,
+            "national_id": self.national_id,
+            "phone": self.phone_number
+        }
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+        }
+        data_statement = {
+            "national_id": self.national_id
+        }
+        response = requests.post(
+            str(url) + "api/v1/customer/mfi/register", headers=headers, data=json.dumps(data))
+        fetch_stc = requests.get(
+            str(url) + "api/v1/mpesa/analytics", headers=headers, params=data_statement)
 
-	def create_customer(self):
-		url = frappe.db.get_value("Patascore API Settings",None,"url")
-		token = frappe.db.get_value("Patascore API Settings",None,"token")
-		data = {
-		"full_name": self.customer_name,
-		"national_id": self.national_id,
-		"phone": self.phone_number
-		}
-		headers = {
-			"Content-Type":"application/json",
-			"Authorization":"Bearer "+token
-		}
-		data_statement = {
-			"national_id": self.national_id
-		}
-		response = requests.post(str(url)+"api/v1/customer/mfi/register", headers = headers, data=json.dumps(data))
-		fetch_stc = requests.get(str(url)+"api/v1/mpesa/analytics",headers = headers, params=data_statement)
+        frappe.msgprint(str(json.loads(response.text)["message"]))
+        if str(json.loads(response.text)["status"]) == "200":
+            self.customer_created_mpesa = 1
+            self.mpesa_id = str(json.loads(response.text)["data"]["id"])
+            # self.statement_response = str(
+            #     json.loads(fetch_stc.text)["message"])
+            self.statement_analytics_successfully_fetched = 1
+        else:
+            frappe.throw("Problem Creating Customer On Patascore")
 
-		frappe.msgprint(str(json.loads(response.text)["message"]))
-		if str(json.loads(response.text)["status"]) == "200":
-			self.customer_created_mpesa = 1
-			self.mpesa_id = str(json.loads(response.text)["data"]["id"])
-			self.statement_response = str(json.loads(fetch_stc.text)["message"])
-		else:
-			frappe.throw("Problem Creating Customer On Patascore")
 
 @frappe.whitelist()
 def check_statement_exist(national_id):
-	url = frappe.db.get_value("Patascore API Settings",None,"url")
-	token = frappe.db.get_value("Patascore API Settings",None,"token")
-	
-	headers = {
-		"Content-Type":"application/json",
-		"Authorization":"Bearer "+token
-	}
-	
-	response = requests.get(str(url)+"api/v1/statement/check?national_id={}".format("37692112"), headers = headers,verify=False)
-	
-	return (response.json())
-	
+    url = frappe.db.get_value("Patascore API Settings", None, "url")
+    token = frappe.db.get_value("Patascore API Settings", None, "token")
+
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + token
+    }
+
+    response = requests.get(str(
+        url) + "api/v1/statement/check?national_id={}".format(national_id), headers=headers, verify=False)
+
+    return (response.json())
+
 
 @frappe.whitelist()
 def check_statement_analytics(national_id):
-	url = frappe.db.get_value("Patascore API Settings",None,"url")
-	token = frappe.db.get_value("Patascore API Settings",None,"token")
-	
-	headers = {
-		"Content-Type":"application/json",
-		"Authorization":"Bearer "+token
-	}
-	
-	response = requests.get(str(url)+"api/v1/mpesa/analytics?national_id={}".format("37692112"), headers = headers,verify=False)
-	frappe.msgprint(str(response))
-	return (response.json())
+    url = frappe.db.get_value("Patascore API Settings", None, "url")
+    token = frappe.db.get_value("Patascore API Settings", None, "token")
+
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + token
+    }
+
+    response = requests.get(str(
+        url) + "api/v1/mpesa/analytics?national_id={}".format(national_id), headers=headers, verify=False)
+    frappe.msgprint(str(response))
+    return (response.json())

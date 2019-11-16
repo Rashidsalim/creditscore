@@ -39,9 +39,10 @@
   "cash_sent_out",
   "loan_repayment",
   "column_break_27",
+  "risk",
   "loan_taken",
-  "savings",
-  "statement_response"
+  "peer_to_peer_transfers",
+  "key_reasons"
  ],
  "fields": [
   {
@@ -214,11 +215,6 @@
    "label": "Loans Taken"
   },
   {
-   "fieldname": "savings",
-   "fieldtype": "Read Only",
-   "label": "Savings"
-  },
-  {
    "fieldname": "column_break_27",
    "fieldtype": "Column Break"
   },
@@ -231,7 +227,7 @@
   },
   {
    "fieldname": "current_score",
-   "fieldtype": "Data",
+   "fieldtype": "Read Only",
    "label": "Current Score"
   },
   {
@@ -254,13 +250,22 @@
    "label": "Get Statement Score"
   },
   {
-   "fieldname": "statement_response",
+   "fieldname": "peer_to_peer_transfers",
+   "fieldtype": "Read Only",
+   "label": "Peer to Peer Transfers"
+  },
+  {
+   "fieldname": "key_reasons",
    "fieldtype": "Text",
-   "in_list_view": 1,
-   "label": "Statement response"
+   "label": "Key Reasons"
+  },
+  {
+   "fieldname": "risk",
+   "fieldtype": "Read Only",
+   "label": "Risk"
   }
  ],
- "modified": "2019-11-11 12:58:02.712681",
+ "modified": "2019-11-16 00:21:57.967980",
  "modified_by": "Administrator",
  "module": "Registry",
  "name": "Customer",
