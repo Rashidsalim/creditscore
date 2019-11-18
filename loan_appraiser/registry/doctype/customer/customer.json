@@ -42,7 +42,8 @@
   "risk",
   "loan_taken",
   "peer_to_peer_transfers",
-  "key_reasons"
+  "key_reasons",
+  "amended_from"
  ],
  "fields": [
   {
@@ -263,9 +264,19 @@
    "fieldname": "risk",
    "fieldtype": "Read Only",
    "label": "Risk"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Customer",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
- "modified": "2019-11-16 00:21:57.967980",
+ "hide_toolbar": 1,
+ "modified": "2019-11-18 14:10:37.619007",
  "modified_by": "Administrator",
  "module": "Registry",
  "name": "Customer",

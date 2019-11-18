@@ -63,10 +63,12 @@ frappe.ui.form.on('Customer', {
 							frm.set_value("cash_received", r.message.summary.received_money)
 							frm.set_value("cash_sent_out", r.message.summary.sent_out)
 							frm.set_value("loan_repayment", r.message.summary.loan_repayment)
-							//frm.set_value("key_reasons", r.message.score_output.reasons_v2.toString())
+							frm.set_value("key_reasons", JSON.stringify(r.message.score_output.reasons, null, 2))
 							frm.set_value("risk", r.message.score_output.risk)
+							frm.set_value("loan_taken", r.message.summary.loan_taken)
+							frm.set_value("peer_to_peer_transfers", r.message.summary.peer_to_peer_transfer)
 
-							frm.refresh_field("current_score", "loan_range", "betting_expenses", "cash_received", "cash_sent_out", "loan_repayment", "risk")
+							frm.refresh_field("current_score", "loan_range", "betting_expenses", "cash_received", "cash_sent_out", "loan_repayment", "risk", "loan_taken", "key_reasons")
 						}
 
 					});
