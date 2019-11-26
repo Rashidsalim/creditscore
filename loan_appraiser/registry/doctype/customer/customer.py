@@ -30,8 +30,6 @@ class Customer(Document):
         }
         response = requests.post(
             str(url) + "api/v1/customer/mfi/register", headers=headers, data=json.dumps(data))
-        fetch_stc = requests.get(
-            str(url) + "api/v1/mpesa/analytics", headers=headers, params=data_statement)
 
         frappe.msgprint(str(json.loads(response.text)["message"]))
         if str(json.loads(response.text)["status"]) == "200":
@@ -39,7 +37,6 @@ class Customer(Document):
             self.mpesa_id = str(json.loads(response.text)["data"]["id"])
             # self.statement_response = str(
             #     json.loads(fetch_stc.text)["message"])
-            self.statement_analytics_successfully_fetched = 1
         else:
             frappe.throw("Problem Creating Customer On Patascore")
 
@@ -56,8 +53,11 @@ def check_statement_exist(national_id):
 
     response = requests.get(str(
         url) + "api/v1/statement/check?national_id={}".format(national_id), headers=headers, verify=False)
-
     return (response.json())
+    # if str(json.dumps(response.json)["status"]) == "200":
+    #     self.statement_analytics_successfully_fetched = 1
+    # else:
+    #     frappe.throw("Statement has not been uploaded.")
 
 
 @frappe.whitelist()
@@ -72,5 +72,24 @@ def check_statement_analytics(national_id):
 
     response = requests.get(str(
         url) + "api/v1/mpesa/analytics?national_id={}".format(national_id), headers=headers, verify=False)
+    frappe.msgprint("Statement Analytics fetched Successfully")
+    return (response.json())
+
+# IPRS Verification
+@frappe.whitelist()
+def fetch_iprs_verification(national_id):
+    url = frappe.db.get_value("Patascore API Settings", None, "url")
+    token = frappe.db.get_value("Patascore API Settings", None, "token")
+
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + token
+    }
+    data = {
+        "identifier_type": "national_id",
+        "identifier": national_id
+    }
+    response = requests.post(str(
+        url) + "api/v1/sync/verification", json=data, headers=headers, verify=False)
     frappe.msgprint(str(response))
     return (response.json())

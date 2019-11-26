@@ -21,13 +21,16 @@
   "mpesa_id",
   "attachments_section",
   "upload_national_id",
+  "column_break_17",
+  "upload_mpesa_statement",
   "column_break_15",
   "iprs_verification_section",
+  "get_iprs_verification",
   "iprs_verified",
-  "reference_id",
+  "iprs_full_name",
   "iprs_national_id",
   "column_break_20",
-  "iprs_full_name",
+  "iprs_gender",
   "iprs_dob",
   "section_break_18",
   "statement_analytics_successfully_fetched",
@@ -38,12 +41,21 @@
   "cash_received",
   "cash_sent_out",
   "loan_repayment",
-  "column_break_27",
   "risk",
+  "column_break_27",
   "loan_taken",
   "peer_to_peer_transfers",
+  "peer_to_peer_received",
+  "pay_bills",
+  "mpesa_withdrawal",
+  "bank_transfers",
+  "airtime_purchase",
   "key_reasons",
-  "amended_from"
+  "amended_from",
+  "loan_status_section",
+  "approve",
+  "column_break_50",
+  "deny"
  ],
  "fields": [
   {
@@ -99,7 +111,7 @@
    "fieldname": "county",
    "fieldtype": "Select",
    "label": "County",
-   "options": "Nairobi\nMombasa\nKisumu",
+   "options": "01 Mombasa\n02 Kwale\n03 Kilifi\n04 Tana River\n05 Lamu\n06 Taita Taveta\n07 Garissa\n8 Wajir\n9 Mandera\n10 Marsabit\n11 Isiolo\n12 Meru\n13 Tharaka Nithi\n14 Embu\n15 Kitui\n16 Machakos\n17 Makueni\n18 Nyandarua\n19 Nyeri\n20 Kirinyaga\n21 Murang\u2019a\n22 Kiambu\n23 Turkana\n24 West Pokot\n25 Samburu\n26 Uasin Gishu\n27 Trans-Nzoia\n28 Elgeyo-Marakwet Rift Valley 29 Nandi Rift Valley\n30 Baringo\n31 Laikipia\n32 Nakuru\n33 Narok\n34 Kajiado\n35 Kericho\n36 Bomet\n37 Kakamega\n38 Vihiga\n39 Bungoma\n40 Busia\n41 Siaya\n42 Kisumu\n43 Homa Bay\n44 Migori\n45 Kisii\n46 Nyamira\n47 Nairobi",
    "reqd": 1
   },
   {
@@ -118,14 +130,14 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "in_preview": 1,
-   "label": "Patascore ID",
+   "label": "API Customer ID",
    "read_only": 1
   },
   {
    "collapsible": 1,
    "fieldname": "mpesa_end_point_section",
    "fieldtype": "Section Break",
-   "label": "Patascore End Point"
+   "label": "API End Point"
   },
   {
    "collapsible": 1,
@@ -179,13 +191,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "reference_id",
-   "fieldtype": "Read Only",
-   "in_list_view": 1,
-   "in_preview": 1,
-   "label": "reference ID"
-  },
-  {
    "fieldname": "iprs_dob",
    "fieldtype": "Read Only",
    "label": "Date of birth"
@@ -213,7 +218,7 @@
   {
    "fieldname": "loan_taken",
    "fieldtype": "Read Only",
-   "label": "Loans Taken"
+   "label": "Loan Amount Taken"
   },
   {
    "fieldname": "column_break_27",
@@ -248,7 +253,7 @@
   {
    "fieldname": "get_statement_score",
    "fieldtype": "Button",
-   "label": "Get Statement Score"
+   "label": "Get Statement Analytics"
   },
   {
    "fieldname": "peer_to_peer_transfers",
@@ -273,10 +278,78 @@
    "options": "Customer",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "get_iprs_verification",
+   "fieldtype": "Button",
+   "label": "Get IPRS Verification"
+  },
+  {
+   "fieldname": "iprs_gender",
+   "fieldtype": "Read Only",
+   "label": "Gender"
+  },
+  {
+   "fieldname": "upload_mpesa_statement",
+   "fieldtype": "Attach",
+   "label": "Upload MPesa Statement"
+  },
+  {
+   "fieldname": "column_break_17",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "pay_bills",
+   "fieldtype": "Read Only",
+   "label": "Pay Bills"
+  },
+  {
+   "fieldname": "mpesa_withdrawal",
+   "fieldtype": "Read Only",
+   "label": "Mpesa Withdrawal"
+  },
+  {
+   "fieldname": "bank_transfers",
+   "fieldtype": "Read Only",
+   "label": "Bank Transfers"
+  },
+  {
+   "fieldname": "airtime_purchase",
+   "fieldtype": "Read Only",
+   "label": "Airtime Purchases"
+  },
+  {
+   "fieldname": "peer_to_peer_received",
+   "fieldtype": "Read Only",
+   "label": "Peer to Peer Received"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "loan_status_section",
+   "fieldtype": "Section Break",
+   "label": "Loan Status"
+  },
+  {
+   "default": "0",
+   "fieldname": "approve",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Approve"
+  },
+  {
+   "fieldname": "column_break_50",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "deny",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Deny"
   }
  ],
- "hide_toolbar": 1,
- "modified": "2019-11-18 14:10:37.619007",
+ "image_field": "upload_national_id",
+ "modified": "2019-11-26 13:38:19.179173",
  "modified_by": "Administrator",
  "module": "Registry",
  "name": "Customer",
